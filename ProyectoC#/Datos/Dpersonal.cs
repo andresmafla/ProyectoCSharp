@@ -171,5 +171,28 @@ namespace ProyectoC_.Datos
                 CONEXIONMAESTRA.Cerrar();
             }
         }
+
+        public void BuscarPersonalIdentidad(ref DataTable dt, string buscador)
+
+        {
+            try
+            {
+                CONEXIONMAESTRA.Abrir();
+                SqlDataAdapter da = new SqlDataAdapter("BuscarPersonaIdentidad", CONEXIONMAESTRA.conectar);
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.Parameters.AddWithValue("@Buscador", buscador);
+                da.Fill(dt);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.StackTrace);
+            }
+            finally
+            {
+                CONEXIONMAESTRA.Cerrar();
+            }
+        }
+
     }
 }
