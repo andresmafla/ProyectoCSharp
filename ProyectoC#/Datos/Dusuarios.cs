@@ -42,11 +42,32 @@ namespace ProyectoC_.Datos
             try
             {
                 CONEXIONMAESTRA.Abrir();
-                SqlDataAdapter da = new SqlDataAdapter("Select * from Usuarios", CONEXIONMAESTRA.conectar);
+                SqlDataAdapter da = new SqlDataAdapter("SELECT IdUsuario, NombreApellidos, Login, Password, Estado FROM Usuarios", CONEXIONMAESTRA.conectar);
                 da.Fill(dt);
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                CONEXIONMAESTRA.Cerrar();
+            }
+        }
+
+        public void ObtenerIdUsuario(ref int Idusuario, string Login)
+        {
+            try
+            {
+                CONEXIONMAESTRA.Abrir();
+                SqlCommand cmd = new SqlCommand("ObtenerUsuario", CONEXIONMAESTRA.conectar);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Login", Login);
+                Idusuario = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            catch (Exception ex)
+            {
+
                 MessageBox.Show(ex.StackTrace);
             }
             finally

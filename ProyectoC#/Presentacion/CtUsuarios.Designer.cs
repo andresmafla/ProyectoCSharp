@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel1 = new Panel();
             btnagregar = new Button();
             pictureBox1 = new PictureBox();
@@ -39,7 +40,7 @@
             panelRegistro = new Panel();
             panelIcono = new Panel();
             btnVolver = new Button();
-            pictureBox11 = new PictureBox();
+            AgregarIconoPc = new PictureBox();
             flowLayoutPanel3 = new FlowLayoutPanel();
             pictureBox7 = new PictureBox();
             pictureBox8 = new PictureBox();
@@ -68,12 +69,13 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
+            dlg = new OpenFileDialog();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)datalistadoUsuarios).BeginInit();
             panelRegistro.SuspendLayout();
             panelIcono.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)AgregarIconoPc).BeginInit();
             flowLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
@@ -213,12 +215,12 @@
             // 
             panelIcono.BackColor = Color.FromArgb(39, 39, 39);
             panelIcono.Controls.Add(btnVolver);
-            panelIcono.Controls.Add(pictureBox11);
+            panelIcono.Controls.Add(AgregarIconoPc);
             panelIcono.Controls.Add(flowLayoutPanel3);
             panelIcono.Controls.Add(flowLayoutPanel2);
-            panelIcono.Location = new Point(461, 49);
+            panelIcono.Location = new Point(410, -2);
             panelIcono.Name = "panelIcono";
-            panelIcono.Size = new Size(536, 388);
+            panelIcono.Size = new Size(278, 269);
             panelIcono.TabIndex = 26;
             panelIcono.Visible = false;
             // 
@@ -235,16 +237,18 @@
             btnVolver.TabIndex = 3;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = false;
+            btnVolver.Click += btnVolver_Click;
             // 
-            // pictureBox11
+            // AgregarIconoPc
             // 
-            pictureBox11.Image = Properties.Resources.add;
-            pictureBox11.Location = new Point(24, 261);
-            pictureBox11.Name = "pictureBox11";
-            pictureBox11.Size = new Size(116, 111);
-            pictureBox11.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox11.TabIndex = 2;
-            pictureBox11.TabStop = false;
+            AgregarIconoPc.Image = Properties.Resources.add;
+            AgregarIconoPc.Location = new Point(24, 261);
+            AgregarIconoPc.Name = "AgregarIconoPc";
+            AgregarIconoPc.Size = new Size(116, 111);
+            AgregarIconoPc.SizeMode = PictureBoxSizeMode.Zoom;
+            AgregarIconoPc.TabIndex = 2;
+            AgregarIconoPc.TabStop = false;
+            AgregarIconoPc.Click += AgregarIconoPc_Click;
             // 
             // flowLayoutPanel3
             // 
@@ -266,6 +270,7 @@
             pictureBox7.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox7.TabIndex = 0;
             pictureBox7.TabStop = false;
+            pictureBox7.Click += pictureBox7_Click;
             // 
             // pictureBox8
             // 
@@ -276,6 +281,7 @@
             pictureBox8.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox8.TabIndex = 1;
             pictureBox8.TabStop = false;
+            pictureBox8.Click += pictureBox8_Click;
             // 
             // pictureBox9
             // 
@@ -286,6 +292,7 @@
             pictureBox9.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox9.TabIndex = 2;
             pictureBox9.TabStop = false;
+            pictureBox9.Click += pictureBox9_Click;
             // 
             // pictureBox10
             // 
@@ -296,6 +303,7 @@
             pictureBox10.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox10.TabIndex = 3;
             pictureBox10.TabStop = false;
+            pictureBox10.Click += pictureBox10_Click;
             // 
             // flowLayoutPanel2
             // 
@@ -317,6 +325,7 @@
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 0;
             pictureBox3.TabStop = false;
+            pictureBox3.Click += pictureBox3_Click;
             // 
             // pictureBox4
             // 
@@ -327,6 +336,7 @@
             pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox4.TabIndex = 1;
             pictureBox4.TabStop = false;
+            pictureBox4.Click += pictureBox4_Click;
             // 
             // pictureBox5
             // 
@@ -337,6 +347,7 @@
             pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox5.TabIndex = 2;
             pictureBox5.TabStop = false;
+            pictureBox5.Click += pictureBox5_Click;
             // 
             // pictureBox6
             // 
@@ -347,16 +358,18 @@
             pictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox6.TabIndex = 3;
             pictureBox6.TabStop = false;
+            pictureBox6.Click += pictureBox6_Click;
             // 
             // lblanuncioicono
             // 
             lblanuncioicono.BackColor = SystemColors.ControlDark;
             lblanuncioicono.Location = new Point(410, 14);
             lblanuncioicono.Name = "lblanuncioicono";
-            lblanuncioicono.Size = new Size(88, 81);
+            lblanuncioicono.Size = new Size(100, 98);
             lblanuncioicono.TabIndex = 25;
             lblanuncioicono.Text = "Elije un Icono";
             lblanuncioicono.TextAlign = ContentAlignment.MiddleCenter;
+            lblanuncioicono.Click += lblanuncioicono_Click;
             // 
             // icono
             // 
@@ -366,6 +379,7 @@
             icono.SizeMode = PictureBoxSizeMode.Zoom;
             icono.TabIndex = 24;
             icono.TabStop = false;
+            icono.Click += icono_Click;
             // 
             // flowLayoutPanel1
             // 
@@ -422,6 +436,7 @@
             btnvolver2.TabIndex = 2;
             btnvolver2.Text = "Volver";
             btnvolver2.UseVisualStyleBackColor = true;
+            btnvolver2.Click += btnvolver2_Click;
             // 
             // panel4
             // 
@@ -443,7 +458,6 @@
             dataListadoModulos.Dock = DockStyle.Fill;
             dataListadoModulos.Location = new Point(0, 0);
             dataListadoModulos.Name = "dataListadoModulos";
-            dataListadoModulos.ReadOnly = true;
             dataListadoModulos.RowHeadersVisible = false;
             dataListadoModulos.RowTemplate.DefaultCellStyle.BackColor = Color.White;
             dataListadoModulos.RowTemplate.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -457,16 +471,22 @@
             // 
             // Marcar
             // 
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.NullValue = false;
+            Marcar.DefaultCellStyle = dataGridViewCellStyle1;
             Marcar.HeaderText = "Marcar";
             Marcar.Name = "Marcar";
-            Marcar.ReadOnly = true;
+            Marcar.Resizable = DataGridViewTriState.True;
             // 
             // txtcontraseña
             // 
             txtcontraseña.Location = new Point(139, 85);
+            txtcontraseña.MaxLength = 6;
             txtcontraseña.Name = "txtcontraseña";
             txtcontraseña.Size = new Size(136, 23);
             txtcontraseña.TabIndex = 21;
+            txtcontraseña.KeyPress += txtcontraseña_KeyPress;
             // 
             // txtusuario
             // 
@@ -547,6 +567,10 @@
             label1.TabIndex = 7;
             label1.Text = "Nombre:";
             // 
+            // dlg
+            // 
+            dlg.FileName = "openFileDialog1";
+            // 
             // CtUsuarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -557,6 +581,7 @@
             Controls.Add(panel1);
             Name = "CtUsuarios";
             Size = new Size(815, 710);
+            Load += CtUsuarios_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -564,7 +589,7 @@
             panelRegistro.ResumeLayout(false);
             panelRegistro.PerformLayout();
             panelIcono.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
+            ((System.ComponentModel.ISupportInitialize)AgregarIconoPc).EndInit();
             flowLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
@@ -608,13 +633,12 @@
         private Button btnguardar;
         private Button btnactualizar;
         private Button btnvolver2;
-        private DataGridViewCheckBoxColumn Marcar;
         private Label lblanuncioicono;
         private PictureBox icono;
         private Panel panelIcono;
         private FlowLayoutPanel flowLayoutPanel2;
         private PictureBox pictureBox3;
-        private PictureBox pictureBox11;
+        private PictureBox AgregarIconoPc;
         private FlowLayoutPanel flowLayoutPanel3;
         private PictureBox pictureBox7;
         private PictureBox pictureBox8;
@@ -624,5 +648,7 @@
         private PictureBox pictureBox5;
         private PictureBox pictureBox6;
         private Button btnVolver;
+        private OpenFileDialog dlg;
+        private DataGridViewCheckBoxColumn Marcar;
     }
 }
