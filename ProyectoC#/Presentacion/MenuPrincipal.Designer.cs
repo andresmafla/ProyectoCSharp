@@ -348,6 +348,7 @@
             btnusuarios.Text = "Usuarios";
             btnusuarios.TextAlign = ContentAlignment.MiddleRight;
             btnusuarios.UseVisualStyleBackColor = false;
+            btnusuarios.Click += btnusuarios_Click;
             // 
             // panel10
             // 

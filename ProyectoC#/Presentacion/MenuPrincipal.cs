@@ -39,5 +39,13 @@ namespace ProyectoC_.Presentacion
             control.Dock = DockStyle.Fill;
             panelPadre.Controls.Add(control);
         }
+
+        private void btnusuarios_Click(object sender, EventArgs e)
+        {
+            panelPadre.Controls.Clear();
+            CtUsuarios control = new CtUsuarios();
+            control.Dock = DockStyle.Fill;
+            panelPadre.Controls.Add(control);
+        }
     }
 }
